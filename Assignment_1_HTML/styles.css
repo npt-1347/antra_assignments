@@ -1,0 +1,180 @@
+/* General Body Styles */
+body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Main Container for the Sign-Up Form */
+.signup-container {
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 650px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Form Layout using Flexbox */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-group {
+  flex: 1 1 calc(50% - 0.5rem); /* Allows for two columns with a gap */
+}
+
+.input-group.full-width {
+  flex-basis: 100%;
+}
+
+/* Input Field Styling */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #555;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #aaa;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #539df3;
+  box-shadow: 0 0 0 3px rgba(127, 182, 244, 0.2);
+}
+
+/* Agreement Checkbox and Text */
+.agreement-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+}
+
+.agreement-row input[type="checkbox"] {
+  margin-top: 4px;
+  accent-color: #4a90e2;
+}
+
+.agreement-row label {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.agreement-row a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.agreement-row a:hover {
+  text-decoration: underline;
+}
+
+.btn-badge {
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: #4a90e2;
+  color: white;
+}
+
+/* Button Container and Styling */
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-register {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-signin {
+  background-color: #50e3c2;
+  color: white;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 600px) {
+  body {
+    align-items: normal;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .input-group {
+    flex-basis: 100%;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+}
