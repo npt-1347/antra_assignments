@@ -1,0 +1,140 @@
+/* General Body and Reset Styles */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  color: #333; /* A slightly softer black for main text */
+}
+
+h1 {
+  font-size: 2em;
+  color: #000;
+}
+
+p {
+  margin-bottom: 1em; /* Same spacing as lists */
+}
+
+a {
+  color: #0b4d14; /* Default link color to match footer */
+}
+
+/* Container for consistent padding and centering */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header and Top Navigation */
+.main-header {
+  background-color: #000;
+  padding: 10px 0;
+}
+
+.main-header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: left;
+}
+
+.main-header nav li {
+  display: inline-block;
+  position: relative;
+  margin-left: 25px;
+}
+
+.main-header nav li::before {
+  content: ""; /* A pseudo-element requires a content property */
+  display: inline-block; /* Allows us to set width and height */
+
+  /* --- Set your bullet's size here --- */
+  width: 20px;
+  height: 20px;
+
+  /* --- Set your bullet image here --- */
+  background-image: url("./link-icon.png");
+  background-size: contain; /* Ensures the image fits within the dimensions */
+  background-repeat: no-repeat; /* Prevents the image from tiling */
+
+  /* --- Position the bullet --- */
+  position: absolute;
+  left: -20px;
+  top: 2px; /* Adjust this value to vertically align the bullet */
+}
+
+.main-header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #c6bfbf;
+  padding: 40px 0;
+}
+
+.hero p {
+  color: #000;
+}
+
+/* Row & Column Layout using Flexbox */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px; /* Creates space between columns */
+}
+
+.column {
+  flex: 1; /* Each column will take up equal space */
+}
+
+/* Footer and Footer Navigation */
+.main-footer {
+  background-color: #0b4d14;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.main-footer .row {
+  align-items: center; /* Vertically center items in the footer */
+}
+
+.main-footer nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; /* Removes bullets */
+}
+
+.main-footer nav li {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+
+.main-footer nav li::before {
+  content: ""; /* A pseudo-element requires a content property */
+  display: inline-block; /* Allows us to set width and height */
+
+  /* --- Set your bullet's size here --- */
+  width: 20px;
+  height: 20px;
+
+  /* --- Set your bullet image here --- */
+  background-image: url("./link-icon.png");
+  background-size: contain; /* Ensures the image fits within the dimensions */
+  background-repeat: no-repeat; /* Prevents the image from tiling */
+
+  /* --- Position the bullet --- */
+  position: absolute;
+  left: -20px;
+  top: 2px; /* Adjust this value to vertically align the bullet */
+}
+
+.main-footer nav a {
+  color: #fff;
+  text-decoration: none;
+}
