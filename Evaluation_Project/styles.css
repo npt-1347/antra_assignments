@@ -1,0 +1,49 @@
+.page-heading {
+  text-align: center;
+}
+
+.course-selection-container {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.course-list-container {
+  height: 300px;
+  width: 200px;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+.course-list-container .heading {
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+}
+
+.course-list-container ul {
+  padding-left: 0px;
+}
+
+.course-list-container ul li {
+  list-style-type: none;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.course-list-container ul li:nth-child(even) {
+  background-color: rgb(221, 239, 221);
+}
+
+/* Overview Container */
+.overview-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.overview-container button {
+  height: auto;
+}
