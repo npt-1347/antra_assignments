@@ -2,37 +2,37 @@
   text-align: center;
 }
 
-.course-selection-container {
+.course-selection {
   display: flex;
   gap: 5rem;
   justify-content: center;
 }
 
-.course-list-container {
+.course-selection__list {
   height: 300px;
   width: 200px;
   border: 1px solid black;
   overflow-y: auto;
 }
 
-.course-list-container .heading {
+.course-selection__list-heading {
   text-align: center;
   width: 100%;
   font-weight: 600;
 }
 
-.course-list-container ul {
+.course-selection__list ul {
   padding-left: 0px;
 }
 
-.course-list-container ul li {
+.course-selection__list ul li {
   list-style-type: none;
   text-align: center;
   border: 1px solid black;
   cursor: pointer;
 }
 
-.course-list-container ul li:nth-child(even) {
+.course-selection__list ul li:nth-child(even) {
   background-color: rgb(221, 239, 221);
 }
 
@@ -44,6 +44,6 @@
   gap: 1rem;
 }
 
-.overview-container button {
+.overview-container__button {
   height: auto;
 }
