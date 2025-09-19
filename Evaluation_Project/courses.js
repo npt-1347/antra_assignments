@@ -12,6 +12,7 @@ const API = (() => {
 
 /************************************VIEW******************************************/
 const View = (() => {
+  // Interactive DOM elements
   let dom = {
     availableCourseList: document.getElementById("available-courses"),
     selectedCourseList: document.getElementById("selected-courses"),
@@ -19,6 +20,7 @@ const View = (() => {
     selectButton: document.getElementById("selectBtn"),
   };
 
+  // Creates list elements for an unordered or ordered list
   const createListItems = (dataList) => {
     let template = "";
     dataList.forEach((course) => {
@@ -50,6 +52,7 @@ const Model = ((view, api) => {
   const { createListItems, render, dom } = view;
   const { courseListPromise } = api;
 
+  // Class that maintains the state of data after interaction
   class CourseList {
     #avlbCourses;
     #sltCourses;
@@ -61,31 +64,37 @@ const Model = ((view, api) => {
       this.#counter = 0;
     }
 
+    // setter for available courses
     set availableCourseList(courseList) {
       this.#avlbCourses = courseList;
       let list = createListItems(courseList);
       render(dom.availableCourseList, list);
     }
 
+    // getter for available courses
     get availableCourseList() {
       return this.#avlbCourses;
     }
 
+    // setter for selected courses
     set selectedCourseList(courseList) {
       this.#sltCourses = courseList;
       let list = createListItems(courseList);
       render(dom.selectedCourseList, list);
     }
 
+    // getter for selected courses
     get selectedCourseList() {
       return this.#sltCourses;
     }
 
+    // setter for counter that contains total credits selected
     set counter(totalCredits) {
       this.#counter = totalCredits;
       render(dom.totalCredits, totalCredits);
     }
 
+    // getter for counter that contains total credits selected
     get counter() {
       return this.#counter;
     }
@@ -100,12 +109,14 @@ const Controller = ((view, model) => {
   const { dom } = view;
   const courseObj = new CourseList();
 
+  // Initializes list based on the data fetched
   const init = async () => {
     let list = await courseListPromise;
     courseObj.availableCourseList = list;
     courseObj.counter = 0;
   };
 
+  // function that adds event listener to each course list item to identify whether its selected or not.
   const addCourseEventListeners = (courses) => {
     courses.forEach((course) => {
       let elem = document.getElementById("course-" + course.courseId);
@@ -115,30 +126,38 @@ const Controller = ((view, model) => {
           courseObj.counter -= course.credit;
           elem.style.removeProperty("background-color");
         } else {
-          if (courseObj.counter < 18) {
+          if (courseObj.counter + course.credit <= 18) {
             course["selected"] = true;
             courseObj.counter += course.credit;
             elem.style.backgroundColor = "#4892fbff";
           } else {
-            window.alert("You cannot choose more than 18 credits.");
+            window.alert(
+              "You cannot choose more than 18 credits in one semester."
+            );
           }
         }
       });
     });
   };
 
+  // function that adds event listener to the select button
   const addButtonEventListener = (buttonElm) => {
     buttonElm.addEventListener("click", () => {
       let confirmation = window.confirm(
         `You have chosen ${courseObj.counter} credits for this semester. You cannot change once you submit. Do you want to confirm?`
       );
       if (confirmation) {
-        let filterCourses = courseObj.availableCourseList.filter(
-          (elm) => elm.selected
-        );
-        let pendingCourses = courseObj.availableCourseList.filter(
-          (elm) => !elm.selected
-        );
+        let filterCourses = [];
+        let pendingCourses = [];
+
+        for (const course of courseObj.availableCourseList) {
+          if (course.selected) {
+            filterCourses.push(course);
+          } else {
+            pendingCourses.push(course);
+          }
+        }
+
         courseObj.availableCourseList = pendingCourses;
         courseObj.selectedCourseList = filterCourses;
         dom.selectButton.disabled = true;
